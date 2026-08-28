@@ -209,13 +209,15 @@
       max-width: 700px;
       margin-bottom: 27px;
       font-size: clamp(3.5rem, 7vw, 6.65rem);
-      line-height: 0.93;
+      line-height: 1;
       letter-spacing: -0.067em;
       font-weight: 740;
     }
 
     .accent-text {
       display: block;
+      padding-bottom: 0.1em;
+      margin-bottom: -0.1em;
       color: var(--teal);
       background: linear-gradient(120deg, #056b65 4%, #12a88f 62%, #64bd74 106%);
       -webkit-background-clip: text;
@@ -267,120 +269,86 @@
       transform: translateX(3px);
     }
 
-    .signal-card {
+    .product-shot {
       position: relative;
-      padding: 13px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      border-radius: 38px;
-      background: rgba(255, 255, 255, 0.48);
+      width: min(100%, 495px);
+      margin-left: auto;
+      padding: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.94);
+      border-radius: 45px;
+      background: rgba(255, 255, 255, 0.58);
       box-shadow: var(--shadow-lg);
-      transform: rotate(1.25deg);
+      transform: rotate(0.85deg);
     }
 
-    .signal-card::before {
+    .product-shot::before {
       content: "";
       position: absolute;
       z-index: -1;
-      width: 62%;
+      width: 72%;
       aspect-ratio: 1;
-      right: -15%;
-      top: -14%;
+      right: -20%;
+      top: -12%;
       border-radius: 50%;
-      background: rgba(186, 241, 221, 0.66);
-      filter: blur(42px);
+      background: rgba(122, 224, 194, 0.48);
+      filter: blur(52px);
     }
 
-    .signal-inner {
-      overflow: hidden;
-      min-height: 554px;
-      padding: 32px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(186, 241, 221, 0.43), transparent 54%),
-        linear-gradient(155deg, #ffffff 0%, #f4f9f6 100%);
-    }
-
-    .signal-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 38px;
-    }
-
-    .signal-label {
-      color: var(--ink-soft);
-      font-size: 13px;
-      font-weight: 650;
-      letter-spacing: 0.02em;
-    }
-
-    .status-pill {
-      padding: 7px 10px;
-      border-radius: 999px;
-      color: var(--teal-deep);
-      background: var(--mint-light);
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .age-orbit {
+    .screen-window {
       position: relative;
-      width: 238px;
-      height: 238px;
-      margin: 0 auto 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: conic-gradient(from 16deg, #0e9f8e 0deg 267deg, #dce9e4 267deg 360deg);
-      box-shadow: 0 18px 55px rgba(8, 127, 117, 0.15);
+      overflow: hidden;
+      height: clamp(560px, 48vw, 655px);
+      border-radius: 35px;
+      background: #f2f3f7;
+      box-shadow: inset 0 0 0 1px rgba(16, 33, 29, 0.06);
     }
 
-    .age-orbit::before {
+    .screen-window::after {
       content: "";
       position: absolute;
-      inset: 14px;
-      border-radius: inherit;
-      background: radial-gradient(circle at 40% 26%, #ffffff, #f7fbf9 72%);
-      box-shadow: inset 0 0 0 1px rgba(16, 33, 29, 0.05);
+      inset: auto 0 0;
+      height: 54px;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(242, 243, 247, 0), rgba(242, 243, 247, 0.92));
     }
 
-    .age-value {
-      position: relative;
-      text-align: center;
-    }
-
-    .age-value strong {
+    .app-screen {
       display: block;
-      margin-bottom: 3px;
-      font-size: 60px;
-      line-height: 1;
-      letter-spacing: -0.07em;
-      font-weight: 720;
+      width: 100%;
+      height: auto;
     }
 
-    .age-value span {
-      color: var(--ink-muted);
-      font-size: 13px;
-      font-weight: 620;
-    }
-
-    .signal-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .signal-row {
-      display: grid;
-      grid-template-columns: 36px minmax(0, 1fr) auto;
+    .real-screen-badge {
+      position: absolute;
+      z-index: 2;
+      left: -24px;
+      bottom: 34px;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 13px 14px;
-      border: 1px solid rgba(16, 33, 29, 0.06);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.78);
+      gap: 9px;
+      padding: 11px 15px;
+      border: 1px solid rgba(16, 33, 29, 0.08);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 35px rgba(16, 70, 56, 0.14);
+      font-size: 12px;
+      font-weight: 690;
+      letter-spacing: 0.01em;
+      transform: rotate(-0.85deg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
-    .signal-icon,
+    .real-screen-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22ad83;
+      box-shadow: 0 0 0 5px rgba(34, 173, 131, 0.12);
+    }
+
     .feature-icon,
     .source-icon {
       display: grid;
@@ -389,45 +357,6 @@
       color: var(--teal-deep);
       background: var(--mint-light);
       font-weight: 760;
-    }
-
-    .signal-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 11px;
-      font-size: 12px;
-    }
-
-    .signal-row:nth-child(2) .signal-icon {
-      background: #eef5ff;
-      color: #276394;
-    }
-
-    .signal-row:nth-child(3) .signal-icon {
-      background: #f1f8e7;
-      color: #5c7738;
-    }
-
-    .signal-name {
-      min-width: 0;
-    }
-
-    .signal-name strong {
-      display: block;
-      margin-bottom: 3px;
-      font-size: 13px;
-      letter-spacing: -0.01em;
-    }
-
-    .signal-name span,
-    .signal-result {
-      color: var(--ink-muted);
-      font-size: 11px;
-    }
-
-    .signal-result {
-      color: var(--teal-deep);
-      font-weight: 700;
     }
 
     .data-strip {
@@ -914,7 +843,7 @@
         max-width: 720px;
       }
 
-      .signal-card {
+      .product-shot {
         width: min(100%, 560px);
         margin-inline: auto;
       }
@@ -969,20 +898,6 @@
 
       h1 {
         font-size: clamp(3.15rem, 16vw, 5rem);
-      }
-
-      .signal-inner {
-        min-height: auto;
-        padding: 24px;
-      }
-
-      .age-orbit {
-        width: 205px;
-        height: 205px;
-      }
-
-      .age-value strong {
-        font-size: 50px;
       }
 
       .section {
@@ -1067,22 +982,20 @@
         width: 100%;
       }
 
-      .signal-card {
+      .product-shot {
         margin-top: 4px;
-        border-radius: 30px;
+        padding: 8px;
+        border-radius: 34px;
       }
 
-      .signal-inner {
-        padding: 22px 18px;
-        border-radius: 22px;
+      .screen-window {
+        height: 560px;
+        border-radius: 27px;
       }
 
-      .signal-row {
-        grid-template-columns: 34px minmax(0, 1fr);
-      }
-
-      .signal-result {
-        display: none;
+      .real-screen-badge {
+        left: 12px;
+        bottom: 20px;
       }
 
       .data-strip-inner {
@@ -1181,47 +1094,19 @@
           </div>
         </div>
 
-        <div class="signal-card" aria-label="Example Surf80 healthspan overview">
-          <div class="signal-inner">
-            <div class="signal-top">
-              <span class="signal-label">Healthspan overview</span>
-              <span class="status-pill">Updated today</span>
-            </div>
-
-            <div class="age-orbit" aria-hidden="true">
-              <div class="age-value">
-                <strong>37.4</strong>
-                <span>Biological age</span>
-              </div>
-            </div>
-
-            <div class="signal-list">
-              <div class="signal-row">
-                <span class="signal-icon" aria-hidden="true">01</span>
-                <span class="signal-name">
-                  <strong>Cardio fitness</strong>
-                  <span>Your highest-impact priority</span>
-                </span>
-                <span class="signal-result">Focus</span>
-              </div>
-              <div class="signal-row">
-                <span class="signal-icon" aria-hidden="true">02</span>
-                <span class="signal-name">
-                  <strong>Sleep consistency</strong>
-                  <span>Supporting your healthspan</span>
-                </span>
-                <span class="signal-result">Strong</span>
-              </div>
-              <div class="signal-row">
-                <span class="signal-icon" aria-hidden="true">03</span>
-                <span class="signal-name">
-                  <strong>Daily movement</strong>
-                  <span>Trending in the right direction</span>
-                </span>
-                <span class="signal-result">Rising</span>
-              </div>
-            </div>
+        <div class="product-shot">
+          <div class="screen-window">
+            <img
+              class="app-screen"
+              src="/assets/surf80-biological-age.png"
+              alt="Actual Surf80 Biological Age screen showing a biological age of 28.6, pace of aging, confidence, coverage, and contributing health metrics."
+              width="900"
+              height="1950"
+              fetchpriority="high"
+              decoding="async"
+            >
           </div>
+          <span class="real-screen-badge">Actual app screen</span>
         </div>
       </div>
     </section>
