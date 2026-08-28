@@ -271,82 +271,81 @@
 
     .product-shot {
       position: relative;
-      width: min(100%, 495px);
+      isolation: isolate;
+      width: min(100%, 460px);
       margin-left: auto;
-      padding: 11px;
-      border: 1px solid rgba(255, 255, 255, 0.94);
-      border-radius: 45px;
-      background: rgba(255, 255, 255, 0.58);
-      box-shadow: var(--shadow-lg);
-      transform: rotate(0.85deg);
+      padding: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 56px;
+      background: linear-gradient(145deg, #343a39 0%, #080a09 34%, #202524 72%, #464d4b 100%);
+      box-shadow:
+        0 34px 90px rgba(11, 48, 41, 0.22),
+        0 10px 28px rgba(9, 25, 21, 0.18),
+        48px -38px 88px rgba(122, 224, 194, 0.25);
+      transform: rotate(0.65deg);
     }
 
     .product-shot::before {
       content: "";
       position: absolute;
-      z-index: -1;
-      width: 72%;
-      aspect-ratio: 1;
-      right: -20%;
-      top: -12%;
-      border-radius: 50%;
-      background: rgba(122, 224, 194, 0.48);
-      filter: blur(52px);
+      z-index: 0;
+      left: -4px;
+      top: 138px;
+      width: 4px;
+      height: 42px;
+      border-radius: 3px 0 0 3px;
+      background: #171b1a;
+      box-shadow: 0 62px 0 #171b1a, 0 116px 0 #171b1a;
+    }
+
+    .product-shot::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      right: -4px;
+      top: 186px;
+      width: 4px;
+      height: 86px;
+      border-radius: 0 3px 3px 0;
+      background: #171b1a;
     }
 
     .screen-window {
       position: relative;
+      z-index: 1;
       overflow: hidden;
-      height: clamp(560px, 48vw, 655px);
-      border-radius: 35px;
+      height: clamp(590px, 49vw, 670px);
+      border-radius: 47px;
       background: #f2f3f7;
-      box-shadow: inset 0 0 0 1px rgba(16, 33, 29, 0.06);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.58);
     }
 
-    .screen-window::after {
-      content: "";
+    .device-island {
       position: absolute;
-      inset: auto 0 0;
-      height: 54px;
+      z-index: 3;
+      top: 13px;
+      left: 50%;
+      width: 94px;
+      height: 27px;
+      border-radius: 999px;
+      background: #050606;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 1px 4px rgba(0, 0, 0, 0.18);
+      transform: translateX(-50%);
       pointer-events: none;
-      background: linear-gradient(to bottom, rgba(242, 243, 247, 0), rgba(242, 243, 247, 0.92));
     }
 
     .app-screen {
+      position: absolute;
+      top: 0;
+      left: 50%;
       display: block;
       width: 100%;
+      min-width: 455px;
+      max-width: none;
       height: auto;
-    }
-
-    .real-screen-badge {
-      position: absolute;
-      z-index: 2;
-      left: -24px;
-      bottom: 34px;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 11px 15px;
-      border: 1px solid rgba(16, 33, 29, 0.08);
-      border-radius: 999px;
-      color: var(--ink-soft);
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: 0 12px 35px rgba(16, 70, 56, 0.14);
-      font-size: 12px;
-      font-weight: 690;
-      letter-spacing: 0.01em;
-      transform: rotate(-0.85deg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .real-screen-badge::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #22ad83;
-      box-shadow: 0 0 0 5px rgba(34, 173, 131, 0.12);
+      transform: translateX(-50%);
     }
 
     .feature-icon,
@@ -985,17 +984,12 @@
       .product-shot {
         margin-top: 4px;
         padding: 8px;
-        border-radius: 34px;
+        border-radius: 48px;
       }
 
       .screen-window {
-        height: 560px;
-        border-radius: 27px;
-      }
-
-      .real-screen-badge {
-        left: 12px;
-        bottom: 20px;
+        height: 590px;
+        border-radius: 40px;
       }
 
       .data-strip-inner {
@@ -1096,6 +1090,7 @@
 
         <div class="product-shot">
           <div class="screen-window">
+            <span class="device-island" aria-hidden="true"></span>
             <img
               class="app-screen"
               src="/assets/surf80-biological-age.png"
@@ -1106,7 +1101,6 @@
               decoding="async"
             >
           </div>
-          <span class="real-screen-badge">Actual app screen</span>
         </div>
       </div>
     </section>
