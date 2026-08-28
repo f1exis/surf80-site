@@ -3,145 +3,1462 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6faf8">
+  <meta name="color-scheme" content="light">
 
-  <title>Surf80</title>
+  <title>Surf80 — Live healthier. Stay capable for longer.</title>
   <meta
     name="description"
-    content="Surf80 helps you understand your healthspan, biological age, fitness, lifestyle, and lab data."
+    content="Surf80 brings together Apple Health, lifestyle, fitness, and optional lab data to help you understand your biological age and act on what matters most for your healthspan."
   >
 
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Surf80 — Live healthier. Stay capable for longer.">
+  <meta
+    property="og:description"
+    content="Understand your biological age, discover what shapes your healthspan, and focus on the changes that matter most."
+  >
+  <meta property="og:site_name" content="Surf80">
+
   <style>
+    :root {
+      --ink: #10211d;
+      --ink-soft: #40524c;
+      --ink-muted: #6b7b76;
+      --paper: #f7faf8;
+      --surface: rgba(255, 255, 255, 0.78);
+      --line: rgba(16, 33, 29, 0.10);
+      --teal: #087f75;
+      --teal-deep: #075f59;
+      --mint: #baf1dd;
+      --mint-light: #e7faf2;
+      --lime: #d9f7b5;
+      --blue: #d8ecff;
+      --shadow-sm: 0 1px 2px rgba(16, 33, 29, 0.04), 0 8px 28px rgba(16, 33, 29, 0.05);
+      --shadow-lg: 0 28px 80px rgba(20, 70, 58, 0.13), 0 8px 24px rgba(20, 70, 58, 0.07);
+      --radius-md: 24px;
+      --radius-lg: 34px;
+      --container: 1160px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
-      color: #1d1d1f;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 90px 24px 60px;
-    }
-
-    .hero {
-      max-width: 760px;
-    }
-
-    h1 {
-      font-size: 64px;
-      line-height: 1.05;
-      margin: 0 0 24px;
-      letter-spacing: -2px;
-    }
-
-    .subtitle {
-      font-size: 26px;
-      line-height: 1.45;
-      color: #4b4b4b;
-      max-width: 720px;
-    }
-
-    .mission {
-      margin-top: 56px;
-      padding: 32px;
-      background: #f5f5f7;
-      border-radius: 20px;
-    }
-
-    h2 {
-      font-size: 28px;
-      margin-top: 0;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.65;
-      color: #4b4b4b;
-    }
-
-    nav {
-      margin-top: 64px;
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
+      min-width: 320px;
+      overflow-x: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 8%, rgba(186, 241, 221, 0.48), transparent 26rem),
+        radial-gradient(circle at 3% 35%, rgba(216, 236, 255, 0.48), transparent 30rem),
+        var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a {
-      color: #008c95;
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(calc(100% - 48px), var(--container));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid transparent;
+      background: rgba(247, 250, 248, 0.76);
+      backdrop-filter: saturate(160%) blur(18px);
+      -webkit-backdrop-filter: saturate(160%) blur(18px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ink);
       text-decoration: none;
+      font-size: 21px;
+      font-weight: 720;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 31px;
+      height: 31px;
+      overflow: hidden;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #0d9c8e 3%, #65ddbc 56%, #d9f7b5 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.46), 0 6px 18px rgba(8, 127, 117, 0.18);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      left: -4px;
+      width: 39px;
+      height: 17px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.92);
+    }
+
+    .brand-mark::before {
+      top: 12px;
+      transform: rotate(-8deg);
+    }
+
+    .brand-mark::after {
+      top: 18px;
+      left: 3px;
+      opacity: 0.62;
+      transform: rotate(-8deg);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 590;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--teal);
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 650;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+
+    .nav-cta {
+      min-height: 40px;
+      padding-inline: 17px;
+      color: #fff !important;
+      background: var(--ink);
+    }
+
+    .nav-cta:hover,
+    .button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(16, 33, 29, 0.17);
+    }
+
+    .hero {
+      position: relative;
+      padding: 94px 0 112px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.92fr);
+      align-items: center;
+      gap: clamp(56px, 7vw, 104px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      color: var(--teal-deep);
+      font-size: 13px;
+      font-weight: 720;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #21ad92;
+      box-shadow: 0 0 0 6px rgba(33, 173, 146, 0.11);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin-bottom: 27px;
+      font-size: clamp(3.5rem, 7vw, 6.65rem);
+      line-height: 0.93;
+      letter-spacing: -0.067em;
+      font-weight: 740;
+    }
+
+    .accent-text {
+      display: block;
+      color: var(--teal);
+      background: linear-gradient(120deg, #056b65 4%, #12a88f 62%, #64bd74 106%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin-bottom: 34px;
+      color: var(--ink-soft);
+      font-size: clamp(1.1rem, 2vw, 1.28rem);
+      line-height: 1.63;
+      letter-spacing: -0.015em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .button-primary {
+      color: #fff;
+      background: var(--ink);
+      box-shadow: 0 8px 22px rgba(16, 33, 29, 0.12);
+    }
+
+    .button-secondary {
+      color: var(--ink);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .button-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(8, 127, 117, 0.27);
+      background: #fff;
+    }
+
+    .arrow {
+      font-size: 18px;
+      line-height: 1;
+      transition: transform 180ms ease;
+    }
+
+    .button:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    .signal-card {
+      position: relative;
+      padding: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 38px;
+      background: rgba(255, 255, 255, 0.48);
+      box-shadow: var(--shadow-lg);
+      transform: rotate(1.25deg);
+    }
+
+    .signal-card::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 62%;
+      aspect-ratio: 1;
+      right: -15%;
+      top: -14%;
+      border-radius: 50%;
+      background: rgba(186, 241, 221, 0.66);
+      filter: blur(42px);
+    }
+
+    .signal-inner {
+      overflow: hidden;
+      min-height: 554px;
+      padding: 32px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(186, 241, 221, 0.43), transparent 54%),
+        linear-gradient(155deg, #ffffff 0%, #f4f9f6 100%);
+    }
+
+    .signal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 38px;
+    }
+
+    .signal-label {
+      color: var(--ink-soft);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .status-pill {
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--teal-deep);
+      background: var(--mint-light);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .age-orbit {
+      position: relative;
+      width: 238px;
+      height: 238px;
+      margin: 0 auto 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: conic-gradient(from 16deg, #0e9f8e 0deg 267deg, #dce9e4 267deg 360deg);
+      box-shadow: 0 18px 55px rgba(8, 127, 117, 0.15);
+    }
+
+    .age-orbit::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: inherit;
+      background: radial-gradient(circle at 40% 26%, #ffffff, #f7fbf9 72%);
+      box-shadow: inset 0 0 0 1px rgba(16, 33, 29, 0.05);
+    }
+
+    .age-value {
+      position: relative;
+      text-align: center;
+    }
+
+    .age-value strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 60px;
+      line-height: 1;
+      letter-spacing: -0.07em;
+      font-weight: 720;
+    }
+
+    .age-value span {
+      color: var(--ink-muted);
+      font-size: 13px;
+      font-weight: 620;
+    }
+
+    .signal-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .signal-row {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 14px;
+      border: 1px solid rgba(16, 33, 29, 0.06);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .signal-icon,
+    .feature-icon,
+    .source-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--teal-deep);
+      background: var(--mint-light);
+      font-weight: 760;
+    }
+
+    .signal-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      font-size: 12px;
+    }
+
+    .signal-row:nth-child(2) .signal-icon {
+      background: #eef5ff;
+      color: #276394;
+    }
+
+    .signal-row:nth-child(3) .signal-icon {
+      background: #f1f8e7;
+      color: #5c7738;
+    }
+
+    .signal-name {
+      min-width: 0;
+    }
+
+    .signal-name strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+      letter-spacing: -0.01em;
+    }
+
+    .signal-name span,
+    .signal-result {
+      color: var(--ink-muted);
+      font-size: 11px;
+    }
+
+    .signal-result {
+      color: var(--teal-deep);
+      font-weight: 700;
+    }
+
+    .data-strip {
+      padding-bottom: 34px;
+    }
+
+    .data-strip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 20px 24px;
+      border-block: 1px solid var(--line);
+      color: var(--ink-muted);
+      font-size: 13px;
+      font-weight: 630;
+    }
+
+    .data-strip-inner strong {
+      color: var(--ink-soft);
+    }
+
+    .data-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #aac0b8;
+    }
+
+    .section {
+      padding: 118px 0;
+    }
+
+    .section-heading {
+      max-width: 770px;
+      margin-bottom: 54px;
+    }
+
+    .section-kicker {
+      margin-bottom: 17px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 730;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 21px;
+      font-size: clamp(2.55rem, 5vw, 4.7rem);
+      line-height: 1.01;
+      letter-spacing: -0.058em;
+      font-weight: 720;
+    }
+
+    .section-heading p,
+    .section-copy {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: clamp(1.04rem, 1.7vw, 1.19rem);
+      line-height: 1.68;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      min-height: 360px;
+      padding: 32px;
+      border: 1px solid rgba(16, 33, 29, 0.075);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(8, 127, 117, 0.17);
+      box-shadow: 0 18px 50px rgba(16, 70, 56, 0.10);
+    }
+
+    .feature-card:nth-child(2) {
+      background: linear-gradient(160deg, rgba(237, 247, 255, 0.9), rgba(255, 255, 255, 0.8));
+    }
+
+    .feature-card:nth-child(3) {
+      background: linear-gradient(160deg, rgba(241, 250, 229, 0.9), rgba(255, 255, 255, 0.8));
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 94px;
+      border-radius: 15px;
+      font-size: 14px;
+    }
+
+    .feature-card:nth-child(2) .feature-icon {
+      color: #276394;
+      background: #e4f1ff;
+    }
+
+    .feature-card:nth-child(3) .feature-icon {
+      color: #5d753c;
+      background: #ebf7da;
+    }
+
+    h3 {
+      margin-bottom: 13px;
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    .feature-card p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      line-height: 1.65;
+    }
+
+    .connected {
+      position: relative;
+    }
+
+    .connected::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 7% 0 auto;
+      height: 72%;
+      background: linear-gradient(180deg, rgba(231, 250, 242, 0.72), rgba(247, 250, 248, 0));
+      border-radius: 70px;
+    }
+
+    .connected-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(470px, 1.14fr);
+      align-items: center;
+      gap: clamp(50px, 8vw, 110px);
+    }
+
+    .source-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .source-card {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr);
+      align-items: center;
+      gap: 18px;
+      padding: 23px;
+      border: 1px solid rgba(16, 33, 29, 0.075);
+      border-radius: 21px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .source-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
       font-size: 17px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .source-card:nth-child(2) .source-icon {
+      color: #276394;
+      background: #e8f3ff;
+    }
+
+    .source-card:nth-child(3) .source-icon {
+      color: #76563a;
+      background: #fbefe4;
+    }
+
+    .source-card h3 {
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .source-card p {
+      margin-bottom: 0;
+      color: var(--ink-muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .optional {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      color: var(--ink-muted);
+      background: rgba(16, 33, 29, 0.06);
+      font-size: 9px;
+      font-weight: 720;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      vertical-align: 2px;
+    }
+
+    .priorities-shell {
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.84);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 16% 0%, rgba(186, 241, 221, 0.65), transparent 40%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(232, 244, 239, 0.76));
+      box-shadow: var(--shadow-lg);
+    }
+
+    .priorities-inner {
+      padding: clamp(34px, 6vw, 72px);
+      border-radius: 28px;
+      background: rgba(250, 252, 251, 0.76);
+    }
+
+    .priorities-top {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: clamp(42px, 8vw, 100px);
+      margin-bottom: 60px;
+    }
+
+    .priorities-top h2 {
+      margin-bottom: 0;
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--line);
+    }
+
+    .step {
+      min-height: 225px;
+      padding: 28px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .step-number {
+      display: block;
+      margin-bottom: 45px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: 0.08em;
+    }
+
+    .step h3 {
+      margin-bottom: 9px;
+      font-size: 19px;
+    }
+
+    .step p {
+      margin-bottom: 0;
+      color: var(--ink-muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .mission-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 590px;
+      display: grid;
+      align-items: end;
+      padding: clamp(36px, 7vw, 84px);
+      border-radius: var(--radius-lg);
+      color: #f8fffc;
+      background:
+        radial-gradient(circle at 83% 22%, rgba(133, 233, 188, 0.38), transparent 28%),
+        radial-gradient(circle at 100% 100%, rgba(120, 181, 226, 0.32), transparent 36%),
+        linear-gradient(135deg, #0c2822 0%, #0b4f48 56%, #147064 100%);
+      box-shadow: 0 28px 90px rgba(10, 63, 54, 0.2);
+    }
+
+    .mission-card::before,
+    .mission-card::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .mission-card::before {
+      width: 500px;
+      height: 500px;
+      right: -90px;
+      top: -180px;
+      box-shadow:
+        0 0 0 52px rgba(255, 255, 255, 0.025),
+        0 0 0 106px rgba(255, 255, 255, 0.018);
+    }
+
+    .mission-card::after {
+      width: 280px;
+      height: 280px;
+      right: 16%;
+      top: 9%;
+      border-color: rgba(185, 244, 220, 0.19);
+    }
+
+    .mission-content {
+      max-width: 830px;
+    }
+
+    .mission-card .section-kicker {
+      color: #9ee8cf;
+    }
+
+    .mission-card h2 {
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 6.8vw, 6.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.065em;
+    }
+
+    .mission-card p {
+      max-width: 700px;
+      margin-bottom: 0;
+      color: rgba(243, 255, 250, 0.76);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+    }
+
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 0.82fr);
+      align-items: center;
+      gap: clamp(54px, 9vw, 120px);
+    }
+
+    .privacy-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .privacy-item {
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .check {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      border-radius: 50%;
+      color: var(--teal-deep);
+      background: var(--mint-light);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .privacy-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+
+    .privacy-item span {
+      color: var(--ink-muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .closing {
+      padding: 42px 0 120px;
+    }
+
+    .closing-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 47px 52px;
+      border: 1px solid rgba(8, 127, 117, 0.12);
+      border-radius: 28px;
+      background: linear-gradient(120deg, rgba(231, 250, 242, 0.92), rgba(241, 249, 255, 0.82));
+    }
+
+    .closing-card h2 {
+      margin-bottom: 8px;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+    }
+
+    .closing-card p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      line-height: 1.55;
     }
 
     footer {
-      margin-top: 72px;
-      padding-top: 24px;
-      border-top: 1px solid #e5e5e5;
-      font-size: 14px;
-      color: #86868b;
+      padding: 0 0 36px;
     }
 
-    @media (max-width: 600px) {
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      padding-top: 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-meta {
+      max-width: 690px;
+    }
+
+    .footer-meta .brand {
+      margin-bottom: 15px;
+    }
+
+    .footer-meta p,
+    .legal-note {
+      color: var(--ink-muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .footer-meta p {
+      margin-bottom: 8px;
+    }
+
+    .legal-note {
+      margin-bottom: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-top: 8px;
+    }
+
+    .footer-links a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 620;
+    }
+
+    .footer-links a:hover {
+      color: var(--teal);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(8, 127, 117, 0.32);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-grid,
+      .connected-grid,
+      .privacy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+      }
+
+      .signal-card {
+        width: min(100%, 560px);
+        margin-inline: auto;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .feature-card:last-child {
+        grid-column: 1 / -1;
+        min-height: 290px;
+      }
+
+      .feature-icon {
+        margin-bottom: 60px;
+      }
+
+      .connected-grid {
+        gap: 48px;
+      }
+
+      .source-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .source-card {
+        grid-template-columns: 1fr;
+        align-content: start;
+      }
+
+      .privacy-grid {
+        gap: 46px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(calc(100% - 32px), var(--container));
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links > a:not(.nav-cta) {
+        display: none;
+      }
+
+      .hero {
+        padding: 58px 0 82px;
+      }
+
       h1 {
-        font-size: 48px;
+        font-size: clamp(3.15rem, 16vw, 5rem);
       }
 
-      .subtitle {
-        font-size: 22px;
+      .signal-inner {
+        min-height: auto;
+        padding: 24px;
       }
 
-      main {
-        padding-top: 64px;
+      .age-orbit {
+        width: 205px;
+        height: 205px;
+      }
+
+      .age-value strong {
+        font-size: 50px;
+      }
+
+      .section {
+        padding: 88px 0;
+      }
+
+      .feature-grid,
+      .source-list,
+      .step-grid,
+      .priorities-top {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card,
+      .feature-card:last-child {
+        grid-column: auto;
+        min-height: 300px;
+      }
+
+      .feature-icon {
+        margin-bottom: 52px;
+      }
+
+      .source-card {
+        grid-template-columns: 54px minmax(0, 1fr);
+      }
+
+      .priorities-inner {
+        padding: 30px 20px 20px;
+      }
+
+      .priorities-top {
+        margin-bottom: 38px;
+      }
+
+      .step-grid {
+        gap: 1px;
+      }
+
+      .step {
+        min-height: auto;
+      }
+
+      .step-number {
+        margin-bottom: 30px;
+      }
+
+      .mission-card {
+        min-height: 570px;
+      }
+
+      .privacy-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .closing-card {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 34px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-cta {
+        display: none !important;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .signal-card {
+        margin-top: 4px;
+        border-radius: 30px;
+      }
+
+      .signal-inner {
+        padding: 22px 18px;
+        border-radius: 22px;
+      }
+
+      .signal-row {
+        grid-template-columns: 34px minmax(0, 1fr);
+      }
+
+      .signal-result {
+        display: none;
+      }
+
+      .data-strip-inner {
+        justify-content: flex-start;
+      }
+
+      .data-dot {
+        display: none;
+      }
+
+      .data-strip-inner span,
+      .data-strip-inner strong {
+        width: 100%;
+        text-align: center;
+      }
+
+      .section-heading {
+        margin-bottom: 38px;
+      }
+
+      .feature-card {
+        padding: 27px;
+      }
+
+      .privacy-list {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-card {
+        min-height: 540px;
+        padding: 34px 25px;
+      }
+
+      .closing {
+        padding-bottom: 88px;
+      }
+
+      .closing-card {
+        padding: 30px 25px;
+      }
+
+      .footer-links {
+        gap: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <main>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Surf80 home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Surf80</span>
+      </a>
 
-    <section class="hero">
-      <h1>Surf80</h1>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#overview">How it helps</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#mission">Our mission</a>
+        <a class="nav-cta" href="#healthspan">Explore Surf80</a>
+      </nav>
+    </div>
+  </header>
 
-      <p class="subtitle">
-        Understand your health today. Build a longer, healthier, more active life.
-      </p>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">A clearer view of how you’re aging</div>
+          <h1 id="hero-title">
+            Live healthier.
+            <span class="accent-text">Stay capable longer.</span>
+          </h1>
+          <p class="hero-copy">
+            Surf80 brings your Apple Health data, lifestyle, fitness, and optional lab results together to help you understand your biological age—and what to focus on next.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#overview">
+              See how it works <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="button button-secondary" href="#mission">Why Surf80</a>
+          </div>
+        </div>
+
+        <div class="signal-card" aria-label="Example Surf80 healthspan overview">
+          <div class="signal-inner">
+            <div class="signal-top">
+              <span class="signal-label">Healthspan overview</span>
+              <span class="status-pill">Updated today</span>
+            </div>
+
+            <div class="age-orbit" aria-hidden="true">
+              <div class="age-value">
+                <strong>37.4</strong>
+                <span>Biological age</span>
+              </div>
+            </div>
+
+            <div class="signal-list">
+              <div class="signal-row">
+                <span class="signal-icon" aria-hidden="true">01</span>
+                <span class="signal-name">
+                  <strong>Cardio fitness</strong>
+                  <span>Your highest-impact priority</span>
+                </span>
+                <span class="signal-result">Focus</span>
+              </div>
+              <div class="signal-row">
+                <span class="signal-icon" aria-hidden="true">02</span>
+                <span class="signal-name">
+                  <strong>Sleep consistency</strong>
+                  <span>Supporting your healthspan</span>
+                </span>
+                <span class="signal-result">Strong</span>
+              </div>
+              <div class="signal-row">
+                <span class="signal-icon" aria-hidden="true">03</span>
+                <span class="signal-name">
+                  <strong>Daily movement</strong>
+                  <span>Trending in the right direction</span>
+                </span>
+                <span class="signal-result">Rising</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="mission">
-      <h2>Live well for longer</h2>
+    <div class="data-strip" aria-label="Surf80 data sources">
+      <div class="container data-strip-inner">
+        <strong>One connected healthspan view</strong>
+        <span class="data-dot" aria-hidden="true"></span>
+        <span>Apple Health</span>
+        <span class="data-dot" aria-hidden="true"></span>
+        <span>Lifestyle &amp; fitness</span>
+        <span class="data-dot" aria-hidden="true"></span>
+        <span>Optional labs</span>
+      </div>
+    </div>
 
-      <p>
-        Surf80 brings together health, fitness, lifestyle, and laboratory data
-        to help you better understand your healthspan.
-      </p>
+    <section class="section" id="overview" aria-labelledby="overview-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Understand your healthspan</p>
+          <h2 id="overview-title">Your health data, translated into direction.</h2>
+          <p>
+            Health data can be overwhelming. Surf80 makes it easier to see the bigger picture, understand what is shaping your healthspan, and decide where your effort can make the greatest difference.
+          </p>
+        </div>
 
-      <p>
-        Track meaningful health metrics, explore biological-age estimates,
-        and identify areas where you may be able to improve long-term health
-        and physical capability.
-      </p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">AGE</div>
+            <h3>Know your biological age</h3>
+            <p>
+              See an estimate of how your body is aging compared with your chronological age—and how it changes over time.
+            </p>
+          </article>
 
-      <p>
-        The goal is simple: stay healthy and capable enough to keep doing
-        the things you love for decades to come.
-      </p>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">WHY</div>
+            <h3>See what shapes it</h3>
+            <p>
+              Understand which areas are supporting your healthspan and which may offer the most meaningful room for improvement.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">NEXT</div>
+            <h3>Focus on what matters</h3>
+            <p>
+              Turn complex signals into clear, actionable priorities so you know what to work on next—not just what to measure.
+            </p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <nav>
-      <a href="/support">Support</a>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms of Use</a>
-    </nav>
+    <section class="section connected" id="healthspan" aria-labelledby="connected-title">
+      <div class="container connected-grid">
+        <div>
+          <p class="section-kicker">Your health, connected</p>
+          <h2 id="connected-title">The full picture is more than one number.</h2>
+          <p class="section-copy">
+            Surf80 combines the signals that reflect how you live, move, recover, and age. The result is a more useful view of your healthspan—built around your real life.
+          </p>
+        </div>
 
-    <footer>
-      © 2026 Surf80
-    </footer>
+        <div class="source-list">
+          <article class="source-card">
+            <div class="source-icon" aria-hidden="true">♥</div>
+            <div>
+              <h3>Apple Health</h3>
+              <p>Activity, fitness, cardiovascular health, sleep, recovery, and more.</p>
+            </div>
+          </article>
 
+          <article class="source-card">
+            <div class="source-icon" aria-hidden="true">↗</div>
+            <div>
+              <h3>Lifestyle &amp; fitness</h3>
+              <p>Habits and context that help make your health signals more meaningful.</p>
+            </div>
+          </article>
+
+          <article class="source-card">
+            <div class="source-icon" aria-hidden="true">+</div>
+            <div>
+              <h3>Lab results <span class="optional">Optional</span></h3>
+              <p>Add biomarkers when you want an even richer view of your healthspan.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="priorities-title">
+      <div class="container">
+        <div class="priorities-shell">
+          <div class="priorities-inner">
+            <div class="priorities-top">
+              <div>
+                <p class="section-kicker">From signals to priorities</p>
+                <h2 id="priorities-title">Less noise. More forward motion.</h2>
+              </div>
+              <p class="section-copy">
+                Surf80 is designed to move beyond charts and scores. It connects the dots across your data, surfaces the areas with the greatest potential impact, and helps you build a clearer path forward.
+              </p>
+            </div>
+
+            <div class="step-grid">
+              <article class="step">
+                <span class="step-number">01 · CONNECT</span>
+                <h3>Bring signals together</h3>
+                <p>Start with the health and lifestyle data you already have.</p>
+              </article>
+              <article class="step">
+                <span class="step-number">02 · UNDERSTAND</span>
+                <h3>Reveal the drivers</h3>
+                <p>See how different areas may be influencing your healthspan.</p>
+              </article>
+              <article class="step">
+                <span class="step-number">03 · ACT</span>
+                <h3>Choose your next focus</h3>
+                <p>Put your attention where it can matter most for the long term.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mission" aria-labelledby="mission-title">
+      <div class="container">
+        <div class="mission-card">
+          <div class="mission-content">
+            <p class="section-kicker">The idea behind Surf80</p>
+            <h2 id="mission-title">More life in your years.</h2>
+            <p>
+              The goal isn’t simply to live longer. It’s to stay healthy, strong, and capable enough to keep doing what you love for decades to come—to surf at 80, explore the world at 90, or take on a new challenge at 100.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="privacy" aria-labelledby="privacy-title">
+      <div class="container privacy-grid">
+        <div>
+          <p class="section-kicker">Private by design</p>
+          <h2 id="privacy-title">Your health data should stay yours.</h2>
+          <p class="section-copy">
+            Health information is deeply personal. Surf80 is built around a simple principle: use your data to help you, not to build a business around your data.
+          </p>
+        </div>
+
+        <div class="privacy-list">
+          <div class="privacy-item">
+            <span class="check" aria-hidden="true">✓</span>
+            <strong>On-device processing</strong>
+            <span>Your health analysis stays on your iPhone.</span>
+          </div>
+          <div class="privacy-item">
+            <span class="check" aria-hidden="true">✓</span>
+            <strong>No account required</strong>
+            <span>Start without creating another health profile online.</span>
+          </div>
+          <div class="privacy-item">
+            <span class="check" aria-hidden="true">✓</span>
+            <strong>No health-data backend</strong>
+            <span>Your personal health data is not stored on Surf80 servers.</span>
+          </div>
+          <div class="privacy-item">
+            <span class="check" aria-hidden="true">✓</span>
+            <strong>Never sold</strong>
+            <span>Your health data is never sold to advertisers or data brokers.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="container">
+        <div class="closing-card">
+          <div>
+            <h2 id="closing-title">Build toward your future self.</h2>
+            <p>Understand where you are. Focus on what matters. Keep moving forward.</p>
+          </div>
+          <a class="button button-primary" href="#top">
+            Back to top <span class="arrow" aria-hidden="true">↑</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-meta">
+        <a class="brand" href="#top" aria-label="Surf80 home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Surf80</span>
+        </a>
+        <p>© <span id="year">2026</span> Surf80. All rights reserved.</p>
+        <p class="legal-note">
+          Surf80 is intended for general wellness and informational purposes only. It is not a medical device and does not provide medical advice, diagnosis, or treatment.
+        </p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/support">Support</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
