@@ -3,223 +3,261 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surf80 Privacy Policy</title>
+  <meta name="theme-color" content="#f7faf8">
+  <link rel="icon" type="image/png" href="/assets/surf80-icon.png">
+  <link rel="apple-touch-icon" href="/assets/surf80-icon.png">
+  <title>Privacy Policy — Surf80</title>
   <meta name="description" content="Privacy Policy for Surf80.">
+
   <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
-      color: #1d1d1f;
+    :root {
+      --ink: #10211d;
+      --soft: #40524c;
+      --muted: #6b7b76;
+      --paper: #f7faf8;
+      --line: rgba(16, 33, 29, 0.10);
+      --teal: #087f75;
     }
 
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 72px 24px;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 4%, rgba(186, 241, 221, 0.42), transparent 28rem),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { width: min(calc(100% - 48px), 1040px); margin-inline: auto; }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 250, 248, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 21px;
+      font-weight: 720;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 31px;
+      height: 31px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 6px 18px rgba(8, 127, 117, 0.16);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+
+    .nav-links a,
+    .footer-links a {
+      color: var(--soft);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 620;
+    }
+
+    .nav-links a:hover,
+    .footer-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--teal); }
+
+    main { padding: 92px 0 108px; }
+    article { max-width: 780px; }
+
+    .eyebrow {
+      margin: 0 0 17px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 730;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: 40px;
-      margin-bottom: 8px;
+      margin: 0 0 14px;
+      font-size: clamp(3.1rem, 8vw, 5.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.063em;
+    }
+
+    .updated { margin: 0 0 48px; color: var(--muted); font-size: 14px; }
+
+    .lead {
+      margin-bottom: 50px;
+      padding: 28px 30px;
+      border: 1px solid rgba(8, 127, 117, 0.12);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(231, 250, 242, 0.92), rgba(242, 249, 255, 0.82));
     }
 
     h2 {
-      margin-top: 40px;
-      font-size: 24px;
+      margin: 46px 0 14px;
+      font-size: clamp(1.55rem, 3vw, 2rem);
+      line-height: 1.18;
+      letter-spacing: -0.035em;
     }
 
     p, li {
-      font-size: 17px;
-      line-height: 1.65;
-      color: #4b4b4b;
+      color: var(--soft);
+      font-size: 16.5px;
+      line-height: 1.72;
     }
 
-    ul {
-      padding-left: 22px;
+    p { margin: 0 0 17px; }
+    ul { margin: 12px 0 20px; padding-left: 23px; }
+    li { margin-bottom: 8px; }
+
+    article a { color: var(--teal); text-underline-offset: 3px; }
+
+    footer { padding-bottom: 36px; }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 30px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
     }
 
-    a {
-      color: #008c95;
-      text-decoration: none;
+    .copyright { margin: 0; color: var(--muted); font-size: 13px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 22px; }
+
+    a:focus-visible { outline: 3px solid rgba(8, 127, 117, 0.3); outline-offset: 4px; }
+
+    @media (max-width: 700px) {
+      .container { width: min(calc(100% - 32px), 1040px); }
+      .nav { min-height: 68px; }
+      .nav-links a:not([aria-current="page"]) { display: none; }
+      main { padding: 66px 0 82px; }
+      .lead { padding: 24px; }
+      .footer-inner { flex-direction: column; }
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .updated {
-      color: #86868b;
-      margin-bottom: 36px;
-    }
-
-    footer {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid #e5e5e5;
-      font-size: 14px;
-      color: #86868b;
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Surf80 home">
+        <img class="brand-logo" src="/assets/surf80-icon.png" alt="" width="31" height="31">
+        <span>Surf80</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/" aria-current="page">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <h1>Privacy Policy</h1>
+    <div class="container">
+      <article>
+        <p class="eyebrow">Surf80 legal</p>
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: August 28, 2026</p>
 
-    <p class="updated">Last updated: August 28, 2026</p>
+        <div class="lead">
+          <p>Surf80 is designed to help you understand and improve your healthspan while keeping your personal health information private.</p>
+          <p>Surf80 does not require an account and does not operate a developer-controlled backend for storing your personal or health data.</p>
+        </div>
 
-    <p>
-      Surf80 is designed to help you understand and improve your healthspan
-      while keeping your personal health information private.
-    </p>
+        <h2>Information Surf80 processes</h2>
+        <p>Depending on the features you choose to use, Surf80 may process information including:</p>
+        <ul>
+          <li>Health and fitness data you authorize Surf80 to read through Apple Health and HealthKit</li>
+          <li>Date of birth or age</li>
+          <li>Biological sex</li>
+          <li>Lifestyle and health questionnaire responses</li>
+          <li>Laboratory measurements and related collection dates</li>
+          <li>Calculated health and biological-age results</li>
+          <li>The filename of a laboratory report imported from Files</li>
+        </ul>
 
-    <p>
-      Surf80 does not require an account and does not operate a developer-controlled
-      backend for storing your personal or health data.
-    </p>
+        <h2>Apple Health and HealthKit</h2>
+        <p>Surf80 accesses Apple Health data only after you grant permission through Apple’s HealthKit authorization system. You can choose which supported health data types Surf80 is allowed to access.</p>
+        <p>Surf80 uses HealthKit data solely to provide health, fitness, biological-age, and healthspan-related features directly to you.</p>
+        <p>Surf80 does not use HealthKit data for advertising, marketing, or data mining, and does not sell HealthKit data.</p>
 
-    <h2>Information Surf80 processes</h2>
+        <h2>Laboratory reports</h2>
+        <p>If you choose to import a laboratory PDF or image, Surf80 temporarily accesses the selected document and processes it on your device using Apple system technologies such as PDFKit and Vision.</p>
+        <p>Surf80 does not upload or retain the original PDF or image. The original document remains in the location from which you selected it, such as Files or Photos.</p>
+        <p>Surf80 may locally store confirmed laboratory measurements, dates, associated context, report-row provenance, and the original filename when applicable.</p>
 
-    <p>
-      Depending on the features you choose to use, Surf80 may process information including:
-    </p>
+        <h2>Where your data is stored</h2>
+        <p>Surf80 processes and stores app data locally on your device. Surf80 does not currently operate a cloud backend that receives or stores your health information.</p>
+        <p>Data stored locally by Surf80 may be included in backups created by Apple’s operating system or backup services, depending on your device and Apple settings. Those backups are controlled by Apple and by your device configuration, not by Surf80.</p>
 
-    <ul>
-      <li>Health and fitness data you authorize Surf80 to read through Apple Health and HealthKit</li>
-      <li>Date of birth or age</li>
-      <li>Biological sex</li>
-      <li>Lifestyle and health questionnaire responses</li>
-      <li>Laboratory measurements and related collection dates</li>
-      <li>Calculated health and biological-age results</li>
-      <li>The filename of a laboratory report imported from Files</li>
-    </ul>
+        <h2>Third parties</h2>
+        <p>Surf80 does not currently use third-party analytics, advertising, crash-reporting, authentication, artificial-intelligence, or cloud-storage services to process your health data.</p>
+        <p>The app may contain links to external scientific or informational websites. Information is sent to an external destination only when you explicitly choose to open a link or share content using Apple’s system sharing features.</p>
 
-    <h2>Apple Health and HealthKit</h2>
+        <h2>Personal identifiers</h2>
+        <p>Surf80 does not require or collect your name, email address, phone number, Apple ID, account identifier, advertising identifier, or device identifier.</p>
 
-    <p>
-      Surf80 accesses Apple Health data only after you grant permission through
-      Apple's HealthKit authorization system. You can choose which supported
-      health data types Surf80 is allowed to access.
-    </p>
+        <h2>Sharing and selling data</h2>
+        <p>Surf80 does not sell your personal or health data.</p>
+        <p>Surf80 does not automatically share your health information with advertisers, data brokers, or other third parties.</p>
 
-    <p>
-      Surf80 uses HealthKit data solely to provide health, fitness, biological-age,
-      and healthspan-related features directly to you.
-    </p>
+        <h2>Your choices and control</h2>
+        <p>You can change Surf80’s access to Apple Health data at any time through Apple Health or iOS privacy settings.</p>
+        <p>Because Surf80’s application data is stored locally, removing the app from your device generally removes Surf80’s locally stored application data, subject to any device backups controlled by Apple.</p>
+        <p>You can also choose whether to import laboratory reports, enter questionnaire information, open external links, or share Surf80 results.</p>
 
-    <p>
-      Surf80 does not use HealthKit data for advertising, marketing, or data mining,
-      and does not sell HealthKit data.
-    </p>
+        <h2>Children’s privacy</h2>
+        <p>Surf80 is not designed to knowingly collect personal information from children through accounts or developer-operated servers.</p>
 
-    <h2>Laboratory reports</h2>
+        <h2>Changes to this policy</h2>
+        <p>We may update this Privacy Policy as Surf80 evolves. If the app begins using additional services or changes how personal information is processed, this policy will be updated accordingly.</p>
 
-    <p>
-      If you choose to import a laboratory PDF or image, Surf80 temporarily accesses
-      the selected document and processes it on your device using Apple system
-      technologies such as PDFKit and Vision.
-    </p>
-
-    <p>
-      Surf80 does not upload or retain the original PDF or image. The original
-      document remains in the location from which you selected it, such as Files or Photos.
-    </p>
-
-    <p>
-      Surf80 may locally store confirmed laboratory measurements, dates, associated
-      context, report-row provenance, and the original filename when applicable.
-    </p>
-
-    <h2>Where your data is stored</h2>
-
-    <p>
-      Surf80 processes and stores app data locally on your device.
-      Surf80 does not currently operate a cloud backend that receives or stores
-      your health information.
-    </p>
-
-    <p>
-      Data stored locally by Surf80 may be included in backups created by Apple's
-      operating system or backup services, depending on your device and Apple settings.
-      Those backups are controlled by Apple and by your device configuration, not by Surf80.
-    </p>
-
-    <h2>Third parties</h2>
-
-    <p>
-      Surf80 does not currently use third-party analytics, advertising,
-      crash-reporting, authentication, artificial-intelligence, or cloud-storage
-      services to process your health data.
-    </p>
-
-    <p>
-      The app may contain links to external scientific or informational websites.
-      Information is sent to an external destination only when you explicitly choose
-      to open a link or share content using Apple's system sharing features.
-    </p>
-
-    <h2>Personal identifiers</h2>
-
-    <p>
-      Surf80 does not require or collect your name, email address, phone number,
-      Apple ID, account identifier, advertising identifier, or device identifier.
-    </p>
-
-    <h2>Sharing and selling data</h2>
-
-    <p>
-      Surf80 does not sell your personal or health data.
-    </p>
-
-    <p>
-      Surf80 does not automatically share your health information with advertisers,
-      data brokers, or other third parties.
-    </p>
-
-    <h2>Your choices and control</h2>
-
-    <p>
-      You can change Surf80's access to Apple Health data at any time through
-      Apple Health or iOS privacy settings.
-    </p>
-
-    <p>
-      Because Surf80's application data is stored locally, removing the app from
-      your device generally removes Surf80's locally stored application data,
-      subject to any device backups controlled by Apple.
-    </p>
-
-    <p>
-      You can also choose whether to import laboratory reports, enter questionnaire
-      information, open external links, or share Surf80 results.
-    </p>
-
-    <h2>Children's privacy</h2>
-
-    <p>
-      Surf80 is not designed to knowingly collect personal information from children
-      through accounts or developer-operated servers.
-    </p>
-
-    <h2>Changes to this policy</h2>
-
-    <p>
-      We may update this Privacy Policy as Surf80 evolves. If the app begins using
-      additional services or changes how personal information is processed, this
-      policy will be updated accordingly.
-    </p>
-
-    <h2>Contact</h2>
-
-    <p>
-      If you have questions about this Privacy Policy, contact us at:
-      <a href="mailto:support@surf80.com">support@surf80.com</a>
-    </p>
-
-    <footer>
-      © 2026 Surf80
-    </footer>
+        <h2>Contact</h2>
+        <p>If you have questions about this Privacy Policy, contact us at <a href="mailto:support@surf80.com">support@surf80.com</a>.</p>
+      </article>
+    </div>
   </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p class="copyright">© <span id="year">2026</span> Surf80</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/">Home</a>
+        <a href="/support/">Support</a>
+        <a href="/terms/">Terms of Use</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

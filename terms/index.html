@@ -3,209 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surf80 Terms of Use</title>
+  <meta name="theme-color" content="#f7faf8">
+  <link rel="icon" type="image/png" href="/assets/surf80-icon.png">
+  <link rel="apple-touch-icon" href="/assets/surf80-icon.png">
+  <title>Terms of Use — Surf80</title>
   <meta name="description" content="Terms of Use for Surf80.">
+
   <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
-      color: #1d1d1f;
+    :root {
+      --ink: #10211d;
+      --soft: #40524c;
+      --muted: #6b7b76;
+      --paper: #f7faf8;
+      --line: rgba(16, 33, 29, 0.10);
+      --teal: #087f75;
     }
 
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 72px 24px;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 4%, rgba(186, 241, 221, 0.42), transparent 28rem),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { width: min(calc(100% - 48px), 1040px); margin-inline: auto; }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 250, 248, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 21px;
+      font-weight: 720;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 31px;
+      height: 31px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 6px 18px rgba(8, 127, 117, 0.16);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+
+    .nav-links a,
+    .footer-links a {
+      color: var(--soft);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 620;
+    }
+
+    .nav-links a:hover,
+    .footer-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--teal); }
+
+    main { padding: 92px 0 108px; }
+    article { max-width: 780px; }
+
+    .eyebrow {
+      margin: 0 0 17px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 730;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: 40px;
-      margin-bottom: 8px;
+      margin: 0 0 14px;
+      font-size: clamp(3.1rem, 8vw, 5.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.063em;
+    }
+
+    .updated { margin: 0 0 48px; color: var(--muted); font-size: 14px; }
+
+    .lead {
+      margin-bottom: 50px;
+      padding: 28px 30px;
+      border: 1px solid rgba(8, 127, 117, 0.12);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(231, 250, 242, 0.92), rgba(242, 249, 255, 0.82));
     }
 
     h2 {
-      margin-top: 40px;
-      font-size: 24px;
+      margin: 46px 0 14px;
+      font-size: clamp(1.55rem, 3vw, 2rem);
+      line-height: 1.18;
+      letter-spacing: -0.035em;
     }
 
     p, li {
-      font-size: 17px;
-      line-height: 1.65;
-      color: #4b4b4b;
+      color: var(--soft);
+      font-size: 16.5px;
+      line-height: 1.72;
     }
 
-    ul {
-      padding-left: 22px;
+    p { margin: 0 0 17px; }
+    ul { margin: 12px 0 20px; padding-left: 23px; }
+    li { margin-bottom: 8px; }
+
+    article a { color: var(--teal); text-underline-offset: 3px; }
+
+    footer { padding-bottom: 36px; }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 30px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
     }
 
-    a {
-      color: #008c95;
-      text-decoration: none;
+    .copyright { margin: 0; color: var(--muted); font-size: 13px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 22px; }
+
+    a:focus-visible { outline: 3px solid rgba(8, 127, 117, 0.3); outline-offset: 4px; }
+
+    @media (max-width: 700px) {
+      .container { width: min(calc(100% - 32px), 1040px); }
+      .nav { min-height: 68px; }
+      .nav-links a:not([aria-current="page"]) { display: none; }
+      main { padding: 66px 0 82px; }
+      .lead { padding: 24px; }
+      .footer-inner { flex-direction: column; }
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .updated {
-      color: #86868b;
-      margin-bottom: 36px;
-    }
-
-    footer {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid #e5e5e5;
-      font-size: 14px;
-      color: #86868b;
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Surf80 home">
+        <img class="brand-logo" src="/assets/surf80-icon.png" alt="" width="31" height="31">
+        <span>Surf80</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/" aria-current="page">Terms</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <h1>Terms of Use</h1>
+    <div class="container">
+      <article>
+        <p class="eyebrow">Surf80 legal</p>
+        <h1>Terms of Use</h1>
+        <p class="updated">Last updated: August 28, 2026</p>
 
-    <p class="updated">Last updated: August 28, 2026</p>
+        <div class="lead">
+          <p>These Terms of Use govern your use of the Surf80 mobile application. By using Surf80, you agree to these terms.</p>
+        </div>
 
-    <p>
-      These Terms of Use govern your use of the Surf80 mobile application.
-      By using Surf80, you agree to these terms.
-    </p>
+        <h2>Purpose of Surf80</h2>
+        <p>Surf80 provides informational tools related to healthspan, fitness, lifestyle, laboratory measurements, and biological-age estimates.</p>
+        <p>Surf80 is intended to help users better understand health-related information and trends. It is not intended to diagnose, treat, cure, or prevent any disease.</p>
 
-    <h2>Purpose of Surf80</h2>
+        <h2>Not medical advice</h2>
+        <p>Surf80 does not provide medical diagnosis, treatment, or individualized medical advice. Information and results shown in the app are for informational and educational purposes only.</p>
+        <p>You should not use Surf80 as a substitute for professional medical advice, diagnosis, or treatment. Always seek appropriate professional care for medical concerns.</p>
+        <p>Do not disregard or delay seeking professional medical advice because of information displayed by Surf80.</p>
 
-    <p>
-      Surf80 provides informational tools related to healthspan, fitness,
-      lifestyle, laboratory measurements, and biological-age estimates.
-    </p>
+        <h2>Health and biological-age estimates</h2>
+        <p>Biological-age scores, healthspan indicators, recommendations, risk signals, and other calculated outputs are estimates based on available data, algorithms, scientific research, and assumptions.</p>
+        <p>These estimates may be incomplete, inaccurate, or unsuitable for a particular individual’s circumstances and should not be interpreted as clinical diagnoses or guarantees of future health outcomes.</p>
 
-    <p>
-      Surf80 is intended to help users better understand health-related information
-      and trends. It is not intended to diagnose, treat, cure, or prevent any disease.
-    </p>
+        <h2>Your data and inputs</h2>
+        <p>You are responsible for the accuracy of information you enter or import into Surf80, including questionnaire responses, laboratory measurements, dates, and other health information.</p>
+        <p>Automated extraction of laboratory information from PDFs or images may contain errors. You should review extracted values before relying on them.</p>
 
-    <h2>Not medical advice</h2>
+        <h2>Apple Health</h2>
+        <p>Surf80 may use data that you choose to make available through Apple Health and HealthKit. Availability and accuracy of this data depend on Apple, connected devices, third-party applications, and the measurements themselves.</p>
 
-    <p>
-      Surf80 does not provide medical diagnosis, treatment, or individualized medical advice.
-      Information and results shown in the app are for informational and educational purposes only.
-    </p>
+        <h2>Use of the app</h2>
+        <p>You agree not to misuse Surf80 or attempt to:</p>
+        <ul>
+          <li>interfere with the operation or security of the app;</li>
+          <li>reverse engineer or exploit the app except where permitted by applicable law;</li>
+          <li>use Surf80 for unlawful purposes; or</li>
+          <li>misrepresent Surf80 results as professional medical diagnoses.</li>
+        </ul>
 
-    <p>
-      You should not use Surf80 as a substitute for professional medical advice,
-      diagnosis, or treatment. Always seek appropriate professional care for medical concerns.
-    </p>
+        <h2>Third-party services and content</h2>
+        <p>Surf80 may provide links to scientific publications, websites, or other external resources. Surf80 is not responsible for the availability, accuracy, content, or privacy practices of third-party services.</p>
 
-    <p>
-      Do not disregard or delay seeking professional medical advice because of information
-      displayed by Surf80.
-    </p>
+        <h2>Availability and changes</h2>
+        <p>Surf80 may be modified, updated, suspended, or discontinued at any time. Features, calculations, supported health metrics, and recommendations may change as the product and underlying scientific evidence evolve.</p>
 
-    <h2>Health and biological-age estimates</h2>
+        <h2>Disclaimer of warranties</h2>
+        <p>To the maximum extent permitted by applicable law, Surf80 is provided on an “as is” and “as available” basis without warranties of any kind, express or implied.</p>
+        <p>We do not guarantee that Surf80 will be uninterrupted, error-free, completely accurate, or suitable for any specific medical or health purpose.</p>
 
-    <p>
-      Biological-age scores, healthspan indicators, recommendations, risk signals,
-      and other calculated outputs are estimates based on available data, algorithms,
-      scientific research, and assumptions.
-    </p>
+        <h2>Limitation of liability</h2>
+        <p>To the maximum extent permitted by applicable law, Surf80 and its developers will not be liable for indirect, incidental, special, consequential, or similar damages arising from use of, or inability to use, the app.</p>
+        <p>Nothing in these Terms excludes liability that cannot legally be excluded under applicable law.</p>
 
-    <p>
-      These estimates may be incomplete, inaccurate, or unsuitable for a particular
-      individual's circumstances and should not be interpreted as clinical diagnoses
-      or guarantees of future health outcomes.
-    </p>
+        <h2>Changes to these terms</h2>
+        <p>We may update these Terms of Use as Surf80 evolves. The current version will be published on this page with its latest update date.</p>
 
-    <h2>Your data and inputs</h2>
-
-    <p>
-      You are responsible for the accuracy of information you enter or import into Surf80,
-      including questionnaire responses, laboratory measurements, dates, and other health information.
-    </p>
-
-    <p>
-      Automated extraction of laboratory information from PDFs or images may contain errors.
-      You should review extracted values before relying on them.
-    </p>
-
-    <h2>Apple Health</h2>
-
-    <p>
-      Surf80 may use data that you choose to make available through Apple Health and HealthKit.
-      Availability and accuracy of this data depend on Apple, connected devices,
-      third-party applications, and the measurements themselves.
-    </p>
-
-    <h2>Use of the app</h2>
-
-    <p>You agree not to misuse Surf80 or attempt to:</p>
-
-    <ul>
-      <li>interfere with the operation or security of the app;</li>
-      <li>reverse engineer or exploit the app except where permitted by applicable law;</li>
-      <li>use Surf80 for unlawful purposes; or</li>
-      <li>misrepresent Surf80 results as professional medical diagnoses.</li>
-    </ul>
-
-    <h2>Third-party services and content</h2>
-
-    <p>
-      Surf80 may provide links to scientific publications, websites, or other external resources.
-      Surf80 is not responsible for the availability, accuracy, content, or privacy practices
-      of third-party services.
-    </p>
-
-    <h2>Availability and changes</h2>
-
-    <p>
-      Surf80 may be modified, updated, suspended, or discontinued at any time.
-      Features, calculations, supported health metrics, and recommendations may change
-      as the product and underlying scientific evidence evolve.
-    </p>
-
-    <h2>Disclaimer of warranties</h2>
-
-    <p>
-      To the maximum extent permitted by applicable law, Surf80 is provided on an
-      "as is" and "as available" basis without warranties of any kind, express or implied.
-    </p>
-
-    <p>
-      We do not guarantee that Surf80 will be uninterrupted, error-free,
-      completely accurate, or suitable for any specific medical or health purpose.
-    </p>
-
-    <h2>Limitation of liability</h2>
-
-    <p>
-      To the maximum extent permitted by applicable law, Surf80 and its developers
-      will not be liable for indirect, incidental, special, consequential, or similar
-      damages arising from use of, or inability to use, the app.
-    </p>
-
-    <p>
-      Nothing in these Terms excludes liability that cannot legally be excluded
-      under applicable law.
-    </p>
-
-    <h2>Changes to these terms</h2>
-
-    <p>
-      We may update these Terms of Use as Surf80 evolves. The current version will
-      be published on this page with its latest update date.
-    </p>
-
-    <h2>Contact</h2>
-
-    <p>
-      If you have questions about these Terms, contact us at:
-      <a href="mailto:support@surf80.com">support@surf80.com</a>
-    </p>
-
-    <footer>
-      © 2026 Surf80
-    </footer>
+        <h2>Contact</h2>
+        <p>If you have questions about these Terms, contact us at <a href="mailto:support@surf80.com">support@surf80.com</a>.</p>
+      </article>
+    </div>
   </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p class="copyright">© <span id="year">2026</span> Surf80</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/">Home</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
